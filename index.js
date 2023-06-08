@@ -41,8 +41,18 @@ svg
 const data = [
   {
     width: 400,
-    height: 300,
+    height: 150,
     fill: "red",
+  },
+  {
+    width: 300,
+    height: 100,
+    fill: "purple",
+  },
+  {
+    width: 200,
+    height: 50,
+    fill: "green",
   },
 ];
 
@@ -52,11 +62,18 @@ const svgTwo = canvasTwo
   .select(".svg-two")
   .data(data)
   .attr("height", "100vh")
-  .attr("width", (d) => d.width);
+  .attr("width", "100vw");
 
-svgTwo
-  .select("rect")
+const rects = svgTwo
+  .selectAll("rect")
   .data(data)
+  .attr("height", (d) => d.height)
+  .attr("width", (d) => d.width)
+  .attr("fill", (d) => d.fill);
+
+rects
+  .enter()
+  .append("rect")
   .attr("height", (d) => d.height)
   .attr("width", (d) => d.width)
   .attr("fill", (d) => d.fill);
