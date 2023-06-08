@@ -1,4 +1,4 @@
-const canvas = d3.select(".canvas");
+const canvas = d3.select(".canvas-one");
 const svg = canvas.append("svg");
 
 svg.attr("height", "100vh").attr("width", "100%");
@@ -35,3 +35,28 @@ svg
   .attr("fill", "grey")
   .text("information")
   .style("font-family", "impact");
+
+// ------------------------------------------
+
+const data = [
+  {
+    width: 400,
+    height: 300,
+    fill: "red",
+  },
+];
+
+const canvasTwo = d3.select(".canvas-two");
+
+const svgTwo = canvasTwo
+  .select(".svg-two")
+  .data(data)
+  .attr("height", "100vh")
+  .attr("width", (d) => d.width);
+
+svgTwo
+  .select("rect")
+  .data(data)
+  .attr("height", (d) => d.height)
+  .attr("width", (d) => d.width)
+  .attr("fill", (d) => d.fill);
